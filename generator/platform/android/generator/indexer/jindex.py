@@ -576,6 +576,7 @@ class ArrayType(object):
 	def __repr__(self):
 		return 'ArrayType.%s' % (self.name,)
 
+ArrayType.ARRAY_OF_ARRAY = ArrayType("_array_array_type")
 ArrayType.OBJECT_ARRAY = ArrayType("_object_array_type")		
 ArrayType.BYTE_ARRAY = ArrayType("_byte_array_type")
 ArrayType.SHORT_ARRAY = ArrayType("_short_array_type")
@@ -1027,9 +1028,12 @@ class TranslationUnit(JavaObject):
 				children = type_hierarchy.get_children()
 				child = children[0]
 				child_class_name = child._class_name
-				type_kind = PrimitiveType.from_id(child_class_name)
-				if type_kind is not None:
-					class_name = '_%s_array_type' % child_class_name
+				if child_class_name == 'com.zynga.sdk.cxx.CXXType$Array':
+					class_name = '_array_array_type'
+				else:
+					type_kind = PrimitiveType.from_id(child_class_name)
+					if type_kind is not None:
+						class_name = '_%s_array_type' % child_class_name
 		structure["type"] = class_name
 		if type_hierarchy.child_count > 0:
 			structure["children"] = list()

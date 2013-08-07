@@ -81,11 +81,8 @@
 #include <jni.h>
 #include <CXXContext.hpp>
 #include <JNIContext.hpp>
-// TODO: integrate with custom converters
 #include <CXXConverter.hpp>
 #include <JDKCXXConverter.hpp>
-// TODO: FIXME: add include package
-// FIXME: remove after testing
 
 #define LOG_TAG "java_lang_reflect_Field"
 #define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
@@ -1278,9 +1275,9 @@ JDKCXX::java_lang_annotation_Annotation java_lang_reflect_Field::getAnnotation(J
 
 	return result;
 }
-std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_reflect_Field::getDeclaredAnnotations()
+std::vector<java_lang_annotation_Annotation> java_lang_reflect_Field::getDeclaredAnnotations()
 {
-	LOGV("std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_reflect_Field::getDeclaredAnnotations() enter");
+	LOGV("std::vector<java_lang_annotation_Annotation> java_lang_reflect_Field::getDeclaredAnnotations() enter");
 
 	const char *methodName = "getDeclaredAnnotations";
 	const char *methodSignature = "()[Ljava/lang/annotation/Annotation;";
@@ -1330,13 +1327,13 @@ std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_reflect_Field::g
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_annotation_Annotation_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_annotation_Annotation > result = (std::vector<JDKCXX::java_lang_annotation_Annotation >) *((std::vector<JDKCXX::java_lang_annotation_Annotation > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_annotation_Annotation > *) cxx_value);
+	std::vector<java_lang_annotation_Annotation> result = (std::vector<java_lang_annotation_Annotation>) *((std::vector<java_lang_annotation_Annotation> *) cxx_value);
+	delete ((std::vector<java_lang_annotation_Annotation> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_reflect_Field::getDeclaredAnnotations() exit");
+	LOGV("std::vector<java_lang_annotation_Annotation> java_lang_reflect_Field::getDeclaredAnnotations() exit");
 
 	return result;
 }

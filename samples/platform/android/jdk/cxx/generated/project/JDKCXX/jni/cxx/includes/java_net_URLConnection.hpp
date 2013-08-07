@@ -192,7 +192,7 @@ public:
 	// Functions
 	 JDKCXX::java_lang_String toString();
 	 JDKCXX::java_net_URL getURL();
-	 JDKCXX::java_lang_Object getContent(std::vector<JDKCXX::java_lang_Class > const& arg0);
+	 JDKCXX::java_lang_Object getContent(std::vector<java_lang_Class> const& arg0);
 	 JDKCXX::java_lang_Object getContent();
 	 JDKCXX::java_io_InputStream getInputStream();
 	 JDKCXX::java_security_Permission getPermission();

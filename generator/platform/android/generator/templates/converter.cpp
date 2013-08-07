@@ -79,3 +79,166 @@ void convert_${entity_class_name}(long& java_value, long& cxx_value, const CXXTy
 }
 #end for
 
+// Array Converter Types
+#for $class_config in $classes
+#set $class_classinfo = $class_config['deriveddata']['targetdata']['classinfo']
+#set $entity_class_name = $class_classinfo['typename']
+#set $entity_namespace_name = $class_classinfo['namespace']
+#set $entity_qualified_name = $entity_namespace_name + '::' + $entity_class_name
+void convert_${entity_class_name}_array_type(long& java_value, long& cxx_value, const CXXTypeHierarchy cxx_type_hierarchy, const converter_t& converter_type, std::stack<long>& converter_stack)
+{
+	JNIContext *jni = JNIContext::sharedInstance();
+
+	if (converter_type == CONVERT_TO_JAVA)
+	{
+		jni->pushLocalFrame();
+
+		cxx_converter item_converter = get_converter(converter_stack);
+
+		std::vector<${entity_qualified_name}> *cxx_vector = (std::vector<${entity_qualified_name}> *) cxx_value;
+		int count = cxx_vector->size();
+
+		std::string child_type = jni->getJNIName( std::string("java.lang.Object") );
+		CXXTypeHierarchy item_type;
+		item_type.type_name = child_type;
+		std::vector<CXXTypeHierarchy> child_types = cxx_type_hierarchy.child_types;
+		if (child_types.size() > 0)
+		{
+			item_type = child_types.at(0);
+			child_type = jni->getJNIName( item_type.type_name );
+		}
+
+		java_value = (long) jni->createObjectArray(count, jni->getClassRef( child_type.c_str() ));
+
+		for(std::vector<${entity_qualified_name}>::iterator it = cxx_vector->begin(); it != cxx_vector->end(); ++it)
+		{
+			long cxx_item_ptr = (long) &(*it);
+			long java_item_ptr = 0;
+			int item_idx = it - cxx_vector->begin();
+			item_converter(java_item_ptr, cxx_item_ptr, item_type, converter_type, converter_stack);
+			jni->setObjectArrayElement((jobjectArray) java_value, item_idx, (jobject) java_item_ptr);
+		}
+
+		java_value = (long) jni->popLocalFrame((jobject) java_value);
+	}
+	else if (converter_type == CONVERT_TO_CXX)
+	{
+		jni->pushLocalFrame();
+
+		std::string child_type = jni->getJNIName( std::string("java.lang.Object") );
+		CXXTypeHierarchy item_type;
+		item_type.type_name = child_type;
+		std::vector<CXXTypeHierarchy> child_types = cxx_type_hierarchy.child_types;
+		if (child_types.size() > 0)
+		{
+			item_type = child_types.at(0);
+			child_type = jni->getJNIName( item_type.type_name );
+		}
+
+		cxx_converter item_converter = get_converter(converter_stack);
+		std::vector<${entity_qualified_name}> *cxx_vector = (std::vector<${entity_qualified_name}> *) cxx_value;
+		int size = (int) jni->getArrayLength((jobjectArray) java_value);
+		for (int idx = 0 ; idx < size; idx++)
+		{
+			long java_item_ptr = (long) jni->getObjectArrayElement((jobjectArray) java_value, idx);
+			long cxx_item_ptr = 0;
+			item_converter(java_item_ptr, cxx_item_ptr, item_type, converter_type, converter_stack);
+			cxx_vector->push_back(*((${entity_qualified_name} *) cxx_item_ptr));
+		}
+
+		jni->popLocalFrame();
+	}
+}
+#end for 
+
+// Array Of Array Converter Types
+#for $class_config in $classes
+#set $class_classinfo = $class_config['deriveddata']['targetdata']['classinfo']
+#set $entity_class_name = $class_classinfo['typename']
+#set $entity_namespace_name = $class_classinfo['namespace']
+#set $entity_qualified_name = $entity_namespace_name + '::' + $entity_class_name
+void convert_${entity_class_name}_array_array_type(long& java_value, long& cxx_value, const CXXTypeHierarchy cxx_type_hierarchy, const converter_t& converter_type, std::stack<long>& converter_stack)
+{
+	JNIContext *jni = JNIContext::sharedInstance();
+
+	if (converter_type == CONVERT_TO_JAVA)
+	{
+		jni->pushLocalFrame();
+
+		cxx_converter item_converter = get_converter(converter_stack);
+
+		std::vector<std::vector<${entity_qualified_name}> > *cxx_vector = (std::vectorstd::vector<<${entity_qualified_name}> > *) cxx_value;
+		int count = cxx_vector->size();
+
+		std::string grand_child_type = jni->getJNIName( std::string("java.lang.Object") );
+		CXXTypeHierarchy item_type;
+		item_type.type_name = grand_child_type;
+		std::vector<CXXTypeHierarchy> child_types = cxx_type_hierarchy.child_types;
+		if (child_types.size() > 0)
+		{
+			cxx_child_type_hierarchy = child_types.at(0);
+			std::vector<CXXTypeHierarchy> grand_child_types = cxx_child_type_hierarchy.child_types;
+			if (grand_child_types.size() > 0)
+			{
+				item_type = grand_child_types.at(0);
+				grand_child_type = jni->getJNIName( item_type.type_name );
+			}
+		}
+
+		java_value = (long) jni->createObjectArray(count, jni->getClassRef( "[Ljava/lang/Object;" ));
+		for (std::vector<std::vector<${entity_qualified_name}> >::iterator it = cxx_vector->begin(); it != cxx_vector->end(); ++it)
+		{
+			std::vector<${entity_qualified_name}> *cxx_vector_inner = (std::vector<${entity_qualified_name}> *) &(*it);
+			int count_inner = cxx_vector_inner->size()
+			long java_value_inner = (long) jni->createObjectArray(count, jni->getClassRef( grand_child_type.c_str() ));
+			for(std::vector<std::vector<${entity_qualified_name}> >::iterator it_inner = cxx_vector_inner->begin(); it_inner != cxx_vector_inner->end(); ++it_inner)
+			{
+				
+			}
+		}
+
+		java_value = (long) jni->createObjectArray(count, jni->getClassRef( grand_child_type.c_str() ));
+
+		for(std::vector<std::vector<${entity_qualified_name}> >::iterator it = cxx_vector->begin(); it != cxx_vector->end(); ++it)
+		{
+			long cxx_item_ptr = (long) &(*it);
+			long java_item_ptr = 0;
+			int item_idx = it - cxx_vector->begin();
+			item_converter(java_item_ptr, cxx_item_ptr, item_type, converter_type, converter_stack);
+			jni->setObjectArrayElement((jobjectArray) java_value, item_idx, (jobject) java_item_ptr);
+		}
+
+		java_value = (long) jni->popLocalFrame((jobject) java_value);
+	}
+	else if (converter_type == CONVERT_TO_CXX)
+	{
+		jni->pushLocalFrame();
+
+		std::string child_type = jni->getJNIName( std::string("java.lang.Object") );
+		CXXTypeHierarchy item_type;
+		item_type.type_name = child_type;
+		std::vector<CXXTypeHierarchy> child_types = cxx_type_hierarchy.child_types;
+		if (child_types.size() > 0)
+		{
+			item_type = child_types.at(0);
+			child_type = jni->getJNIName( item_type.type_name );
+		}
+
+		cxx_converter item_converter = get_converter(converter_stack);
+		std::vector<${entity_qualified_name}> *cxx_vector = (std::vector<${entity_qualified_name}> *) cxx_value;
+		int size = (int) jni->getArrayLength((jobjectArray) java_value);
+		for (int idx = 0 ; idx < size; idx++)
+		{
+			long java_item_ptr = (long) jni->getObjectArrayElement((jobjectArray) java_value, idx);
+			long cxx_item_ptr = 0;
+			item_converter(java_item_ptr, cxx_item_ptr, item_type, converter_type, converter_stack);
+			cxx_vector->push_back(*((${entity_qualified_name} *) cxx_item_ptr));
+		}
+
+		jni->popLocalFrame();
+	}
+}
+#end for 
+
+
+

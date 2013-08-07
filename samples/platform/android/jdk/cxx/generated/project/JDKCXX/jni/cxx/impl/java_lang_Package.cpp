@@ -54,11 +54,8 @@
 #include <jni.h>
 #include <CXXContext.hpp>
 #include <JNIContext.hpp>
-// TODO: integrate with custom converters
 #include <CXXConverter.hpp>
 #include <JDKCXXConverter.hpp>
-// TODO: FIXME: add include package
-// FIXME: remove after testing
 
 #define LOG_TAG "java_lang_Package"
 #define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
@@ -557,9 +554,9 @@ bool java_lang_Package::isAnnotationPresent(JDKCXX::java_lang_Class const& arg0)
 
 	return result;
 }
-std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_Package::getAnnotations()
+std::vector<java_lang_annotation_Annotation> java_lang_Package::getAnnotations()
 {
-	LOGV("std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_Package::getAnnotations() enter");
+	LOGV("std::vector<java_lang_annotation_Annotation> java_lang_Package::getAnnotations() enter");
 
 	const char *methodName = "getAnnotations";
 	const char *methodSignature = "()[Ljava/lang/annotation/Annotation;";
@@ -609,19 +606,19 @@ std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_Package::getAnno
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_annotation_Annotation_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_annotation_Annotation > result = (std::vector<JDKCXX::java_lang_annotation_Annotation >) *((std::vector<JDKCXX::java_lang_annotation_Annotation > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_annotation_Annotation > *) cxx_value);
+	std::vector<java_lang_annotation_Annotation> result = (std::vector<java_lang_annotation_Annotation>) *((std::vector<java_lang_annotation_Annotation> *) cxx_value);
+	delete ((std::vector<java_lang_annotation_Annotation> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_Package::getAnnotations() exit");
+	LOGV("std::vector<java_lang_annotation_Annotation> java_lang_Package::getAnnotations() exit");
 
 	return result;
 }
-std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_Package::getDeclaredAnnotations()
+std::vector<java_lang_annotation_Annotation> java_lang_Package::getDeclaredAnnotations()
 {
-	LOGV("std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_Package::getDeclaredAnnotations() enter");
+	LOGV("std::vector<java_lang_annotation_Annotation> java_lang_Package::getDeclaredAnnotations() enter");
 
 	const char *methodName = "getDeclaredAnnotations";
 	const char *methodSignature = "()[Ljava/lang/annotation/Annotation;";
@@ -671,19 +668,19 @@ std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_Package::getDecl
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_annotation_Annotation_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_annotation_Annotation > result = (std::vector<JDKCXX::java_lang_annotation_Annotation >) *((std::vector<JDKCXX::java_lang_annotation_Annotation > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_annotation_Annotation > *) cxx_value);
+	std::vector<java_lang_annotation_Annotation> result = (std::vector<java_lang_annotation_Annotation>) *((std::vector<java_lang_annotation_Annotation> *) cxx_value);
+	delete ((std::vector<java_lang_annotation_Annotation> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_annotation_Annotation > java_lang_Package::getDeclaredAnnotations() exit");
+	LOGV("std::vector<java_lang_annotation_Annotation> java_lang_Package::getDeclaredAnnotations() exit");
 
 	return result;
 }
-std::vector<JDKCXX::java_lang_Package > java_lang_Package::getPackages()
+std::vector<java_lang_Package> java_lang_Package::getPackages()
 {
-	LOGV("std::vector<JDKCXX::java_lang_Package > java_lang_Package::getPackages() enter");
+	LOGV("std::vector<java_lang_Package> java_lang_Package::getPackages() enter");
 
 	const char *methodName = "getPackages";
 	const char *methodSignature = "()[Ljava/lang/Package;";
@@ -733,13 +730,13 @@ std::vector<JDKCXX::java_lang_Package > java_lang_Package::getPackages()
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_Package_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_Package > result = (std::vector<JDKCXX::java_lang_Package >) *((std::vector<JDKCXX::java_lang_Package > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_Package > *) cxx_value);
+	std::vector<java_lang_Package> result = (std::vector<java_lang_Package>) *((std::vector<java_lang_Package> *) cxx_value);
+	delete ((std::vector<java_lang_Package> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_Package > java_lang_Package::getPackages() exit");
+	LOGV("std::vector<java_lang_Package> java_lang_Package::getPackages() exit");
 
 	return result;
 }

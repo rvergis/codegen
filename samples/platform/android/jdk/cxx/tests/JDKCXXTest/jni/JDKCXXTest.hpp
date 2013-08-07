@@ -24,6 +24,7 @@ extern "C" {
 void test_java_lang_String();
 void test_java_net_URLConnection();
 void test_java_util_Map();
+void test_java_util_List();
 void test_callbacks();
 
 // ~ jni

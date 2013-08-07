@@ -111,8 +111,8 @@ public:
 	 bool contains(JDKCXX::java_lang_Object const& arg0);
 	 bool addAll(JDKCXX::java_util_Collection const& arg0);
 	 int size();
-	 std::vector<JDKCXX::java_lang_Object > toArray(std::vector<JDKCXX::java_lang_Object > const& arg0);
-	 std::vector<JDKCXX::java_lang_Object > toArray();
+	 std::vector<java_lang_Object> toArray(std::vector<java_lang_Object> const& arg0);
+	 std::vector<java_lang_Object> toArray();
 	 JDKCXX::java_util_Iterator iterator();
 	 bool remove(JDKCXX::java_lang_Object const& arg0);
 	 bool removeAll(JDKCXX::java_util_Collection const& arg0);

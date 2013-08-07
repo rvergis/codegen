@@ -13,8 +13,8 @@
     <property name="deploy.platform" value="android" />
     <property name="generator.path" value="${env.PATH}:.:${sdk.dir}/platform-tools" />
 
-    <fail unless="sdk.dir" message="sdk.dir is missing. Run './setup.py -s /path/to/sdk -n /path/to/ndk' to generate local.properties."/>
-    <fail unless="ndk.dir" message="ndk.dir is missing. Run './setup.py -s /path/to/sdk -n /path/to/ndk' to generate local.properties."/>
+    <fail unless="sdk.dir" message="sdk.dir is missing. Run 'codegen/platform/android/setup.py -s /path/to/sdk -n /path/to/ndk' to generate local.properties."/>
+    <fail unless="ndk.dir" message="ndk.dir is missing. Run 'codegen/platform/android/setup.py -s /path/to/sdk -n /path/to/ndk' to generate local.properties."/>
 
     <!--                                                                    -->
     <!--                        Private Targets                             -->

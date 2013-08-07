@@ -85,11 +85,8 @@
 #include <jni.h>
 #include <CXXContext.hpp>
 #include <JNIContext.hpp>
-// TODO: integrate with custom converters
 #include <CXXConverter.hpp>
 #include <JDKCXXConverter.hpp>
-// TODO: FIXME: add include package
-// FIXME: remove after testing
 
 #define LOG_TAG "java_net_URL"
 #define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
@@ -1781,9 +1778,9 @@ JDKCXX::java_net_URLConnection java_net_URL::openConnection()
 
 	return result;
 }
-JDKCXX::java_lang_Object java_net_URL::getContent(std::vector<JDKCXX::java_lang_Class > const& arg0)
+JDKCXX::java_lang_Object java_net_URL::getContent(std::vector<java_lang_Class> const& arg0)
 {
-	LOGV("JDKCXX::java_lang_Object java_net_URL::getContent(std::vector<JDKCXX::java_lang_Class > const& arg0) enter");
+	LOGV("JDKCXX::java_lang_Object java_net_URL::getContent(std::vector<java_lang_Class> const& arg0) enter");
 
 	const char *methodName = "getContent";
 	const char *methodSignature = "([Ljava/lang/Class;)Ljava/lang/Object;";
@@ -1833,7 +1830,7 @@ JDKCXX::java_lang_Object java_net_URL::getContent(std::vector<JDKCXX::java_lang_
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_JAVA;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_Class_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 
 		// Convert to JNI
 		jarg0 = convert_jni__object_array_type_to_jni(java_value);
@@ -1860,7 +1857,7 @@ JDKCXX::java_lang_Object java_net_URL::getContent(std::vector<JDKCXX::java_lang_
 	JDKCXX::java_lang_Object result((JDKCXX::java_lang_Object) *((JDKCXX::java_lang_Object *) cxx_value));
 	delete ((JDKCXX::java_lang_Object *) cxx_value);
 		
-	LOGV("JDKCXX::java_lang_Object java_net_URL::getContent(std::vector<JDKCXX::java_lang_Class > const& arg0) exit");
+	LOGV("JDKCXX::java_lang_Object java_net_URL::getContent(std::vector<java_lang_Class> const& arg0) exit");
 
 	return result;
 }

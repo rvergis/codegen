@@ -293,5 +293,8 @@ config = {
 		{
 			"name" : "java.util.HashMap",
 		},
+		{
+			"name" : "java.util.ArrayList",
+		}
 	],
 }

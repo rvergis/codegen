@@ -74,7 +74,7 @@ public:
 	virtual ~java_net_ContentHandler();
 	// Functions
 	 JDKCXX::java_lang_Object getContent(JDKCXX::java_net_URLConnection const& arg0);
-	 JDKCXX::java_lang_Object getContent(JDKCXX::java_net_URLConnection const& arg0,std::vector<JDKCXX::java_lang_Class > const& arg1);
+	 JDKCXX::java_lang_Object getContent(JDKCXX::java_net_URLConnection const& arg0,std::vector<java_lang_Class> const& arg1);
 };	
 
 } // namespace

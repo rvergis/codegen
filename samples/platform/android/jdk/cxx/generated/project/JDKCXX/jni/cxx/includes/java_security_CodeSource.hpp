@@ -93,8 +93,8 @@ public:
 	java_security_CodeSource(const java_security_CodeSource& cc);
 	java_security_CodeSource(Proxy proxy);
 	// Public Constructors
-	java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<JDKCXX::java_security_CodeSigner > const& arg1);
-	java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<JDKCXX::java_security_cert_Certificate > const& arg1);
+	java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<java_security_CodeSigner> const& arg1);
+	java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<java_security_cert_Certificate> const& arg1);
 	Proxy proxy() const;	
 	// Default Destructor
 	virtual ~java_security_CodeSource();
@@ -103,9 +103,9 @@ public:
 	 JDKCXX::java_lang_String toString();
 	 int hashCode();
 	 JDKCXX::java_net_URL getLocation();
-	 std::vector<JDKCXX::java_security_cert_Certificate > getCertificates();
+	 std::vector<java_security_cert_Certificate> getCertificates();
 	 bool implies(JDKCXX::java_security_CodeSource const& arg0);
-	 std::vector<JDKCXX::java_security_CodeSigner > getCodeSigners();
+	 std::vector<java_security_CodeSigner> getCodeSigners();
 };	
 
 } // namespace

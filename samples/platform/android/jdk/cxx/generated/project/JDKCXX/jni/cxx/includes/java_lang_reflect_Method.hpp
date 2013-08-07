@@ -141,28 +141,28 @@ public:
 	// Default Destructor
 	virtual ~java_lang_reflect_Method();
 	// Functions
-	 JDKCXX::java_lang_Object invoke(JDKCXX::java_lang_Object const& arg0,std::vector<JDKCXX::java_lang_Object > const& arg1);
+	 JDKCXX::java_lang_Object invoke(JDKCXX::java_lang_Object const& arg0,std::vector<java_lang_Object> const& arg1);
 	 bool equals(JDKCXX::java_lang_Object const& arg0);
 	 JDKCXX::java_lang_String toString();
 	 int hashCode();
 	 int getModifiers();
 	 JDKCXX::java_lang_String getName();
 	 bool isSynthetic();
-	 std::vector<JDKCXX::java_lang_reflect_TypeVariable > getTypeParameters();
+	 std::vector<java_lang_reflect_TypeVariable> getTypeParameters();
 	 JDKCXX::java_lang_Class getDeclaringClass();
 	 JDKCXX::java_lang_annotation_Annotation getAnnotation(JDKCXX::java_lang_Class const& arg0);
-	 std::vector<JDKCXX::java_lang_annotation_Annotation > getDeclaredAnnotations();
+	 std::vector<java_lang_annotation_Annotation> getDeclaredAnnotations();
 	 JDKCXX::java_lang_Class getReturnType();
-	 std::vector<JDKCXX::java_lang_Class > getParameterTypes();
+	 std::vector<java_lang_Class> getParameterTypes();
 	 JDKCXX::java_lang_String toGenericString();
 	 JDKCXX::java_lang_reflect_Type getGenericReturnType();
-	 std::vector<JDKCXX::java_lang_reflect_Type > getGenericParameterTypes();
-	 std::vector<JDKCXX::java_lang_Class > getExceptionTypes();
-	 std::vector<JDKCXX::java_lang_reflect_Type > getGenericExceptionTypes();
+	 std::vector<java_lang_reflect_Type> getGenericParameterTypes();
+	 std::vector<java_lang_Class> getExceptionTypes();
+	 std::vector<java_lang_reflect_Type> getGenericExceptionTypes();
 	 bool isBridge();
 	 bool isVarArgs();
 	 JDKCXX::java_lang_Object getDefaultValue();
-	 std::vector<std::vector<JDKCXX::java_lang_annotation_Annotation > > getParameterAnnotations();
+	 std::vector<std::vector<java_lang_annotation_Annotation> > getParameterAnnotations();
 };	
 
 } // namespace

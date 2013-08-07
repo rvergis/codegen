@@ -119,9 +119,9 @@ public:
 	static JDKCXX::java_lang_Package getPackage(JDKCXX::java_lang_String const& arg0);
 	 JDKCXX::java_lang_annotation_Annotation getAnnotation(JDKCXX::java_lang_Class const& arg0);
 	 bool isAnnotationPresent(JDKCXX::java_lang_Class const& arg0);
-	 std::vector<JDKCXX::java_lang_annotation_Annotation > getAnnotations();
-	 std::vector<JDKCXX::java_lang_annotation_Annotation > getDeclaredAnnotations();
-	static std::vector<JDKCXX::java_lang_Package > getPackages();
+	 std::vector<java_lang_annotation_Annotation> getAnnotations();
+	 std::vector<java_lang_annotation_Annotation> getDeclaredAnnotations();
+	static std::vector<java_lang_Package> getPackages();
 	 bool isSealed();
 	 bool isSealed(JDKCXX::java_net_URL const& arg0);
 	 JDKCXX::java_lang_String getSpecificationTitle();

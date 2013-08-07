@@ -41,11 +41,8 @@
 #include <jni.h>
 #include <CXXContext.hpp>
 #include <JNIContext.hpp>
-// TODO: integrate with custom converters
 #include <CXXConverter.hpp>
 #include <JDKCXXConverter.hpp>
-// TODO: FIXME: add include package
-// FIXME: remove after testing
 
 #define LOG_TAG "java_security_ProtectionDomain"
 #define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
@@ -232,9 +229,9 @@ java_security_ProtectionDomain::java_security_ProtectionDomain(JDKCXX::java_secu
 
 	LOGV("java_security_ProtectionDomain::java_security_ProtectionDomain(JDKCXX::java_security_CodeSource const& arg0,JDKCXX::java_security_PermissionCollection const& arg1) exit");	
 }
-java_security_ProtectionDomain::java_security_ProtectionDomain(JDKCXX::java_security_CodeSource const& arg0,JDKCXX::java_security_PermissionCollection const& arg1,JDKCXX::java_lang_ClassLoader const& arg2,std::vector<JDKCXX::java_security_Principal > const& arg3)
+java_security_ProtectionDomain::java_security_ProtectionDomain(JDKCXX::java_security_CodeSource const& arg0,JDKCXX::java_security_PermissionCollection const& arg1,JDKCXX::java_lang_ClassLoader const& arg2,std::vector<java_security_Principal> const& arg3)
 {
-	LOGV("java_security_ProtectionDomain::java_security_ProtectionDomain(JDKCXX::java_security_CodeSource const& arg0,JDKCXX::java_security_PermissionCollection const& arg1,JDKCXX::java_lang_ClassLoader const& arg2,std::vector<JDKCXX::java_security_Principal > const& arg3) enter");	
+	LOGV("java_security_ProtectionDomain::java_security_ProtectionDomain(JDKCXX::java_security_CodeSource const& arg0,JDKCXX::java_security_PermissionCollection const& arg1,JDKCXX::java_lang_ClassLoader const& arg2,std::vector<java_security_Principal> const& arg3) enter");	
 
 	const char *methodName = "<init>";
 	const char *methodSignature = "(Ljava/security/CodeSource;Ljava/security/PermissionCollection;Ljava/lang/ClassLoader;[Ljava/security/Principal;)V";
@@ -352,7 +349,7 @@ java_security_ProtectionDomain::java_security_ProtectionDomain(JDKCXX::java_secu
 				}
 			}
 			converter_t converter_type = (converter_t) CONVERT_TO_JAVA;
-			convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+			convert_java_security_Principal_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 
 			// Convert to JNI
 			jarg3 = convert_jni__object_array_type_to_jni(java_value);
@@ -368,7 +365,7 @@ java_security_ProtectionDomain::java_security_ProtectionDomain(JDKCXX::java_secu
 
 	jni->popLocalFrame();
 
-	LOGV("java_security_ProtectionDomain::java_security_ProtectionDomain(JDKCXX::java_security_CodeSource const& arg0,JDKCXX::java_security_PermissionCollection const& arg1,JDKCXX::java_lang_ClassLoader const& arg2,std::vector<JDKCXX::java_security_Principal > const& arg3) exit");	
+	LOGV("java_security_ProtectionDomain::java_security_ProtectionDomain(JDKCXX::java_security_CodeSource const& arg0,JDKCXX::java_security_PermissionCollection const& arg1,JDKCXX::java_lang_ClassLoader const& arg2,std::vector<java_security_Principal> const& arg3) exit");	
 }
 // Default Instance Destructor
 java_security_ProtectionDomain::~java_security_ProtectionDomain()
@@ -517,9 +514,9 @@ JDKCXX::java_security_CodeSource java_security_ProtectionDomain::getCodeSource()
 
 	return result;
 }
-std::vector<JDKCXX::java_security_Principal > java_security_ProtectionDomain::getPrincipals()
+std::vector<java_security_Principal> java_security_ProtectionDomain::getPrincipals()
 {
-	LOGV("std::vector<JDKCXX::java_security_Principal > java_security_ProtectionDomain::getPrincipals() enter");
+	LOGV("std::vector<java_security_Principal> java_security_ProtectionDomain::getPrincipals() enter");
 
 	const char *methodName = "getPrincipals";
 	const char *methodSignature = "()[Ljava/security/Principal;";
@@ -569,13 +566,13 @@ std::vector<JDKCXX::java_security_Principal > java_security_ProtectionDomain::ge
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_security_Principal_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_security_Principal > result = (std::vector<JDKCXX::java_security_Principal >) *((std::vector<JDKCXX::java_security_Principal > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_security_Principal > *) cxx_value);
+	std::vector<java_security_Principal> result = (std::vector<java_security_Principal>) *((std::vector<java_security_Principal> *) cxx_value);
+	delete ((std::vector<java_security_Principal> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_security_Principal > java_security_ProtectionDomain::getPrincipals() exit");
+	LOGV("std::vector<java_security_Principal> java_security_ProtectionDomain::getPrincipals() exit");
 
 	return result;
 }

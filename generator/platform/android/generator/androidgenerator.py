@@ -128,14 +128,26 @@ class Generator(BaseGenerator):
 	def _setup_default_converters(self):
 		logging.debug("_setup_default_converters enter")
 		self.include_default_converters = True
-		self.default_converters_file_name = os.path.join(self.target, "converters", "jconverter.py")
-		logging.debug("self.default_converters_file_name " + str(self.default_converters_file_name))
-		self.config_module = ConfigModule(self.default_converters_file_name,None)
+		self.default_converters = list()
+		# Converters
+		default_converters_file_name = os.path.join(self.target, "converters", "jconverter.py")
+		logging.debug("default_converters_file_name " + str(default_converters_file_name))
+		self.config_module = ConfigModule(default_converters_file_name,None)
 		assert self.config_module.is_valid, "config_module is not valid"
 		config_data = self.config_module.config_data
 		assert config_data is not None, "config does not exist"
 		assert "converters" in config_data, "converters not in config"
-		self.default_converters = config_data["converters"]
+		self.default_converters.extend(config_data["converters"])
+		self.config_module = None
+		# JNI Converters
+		default_jni_converters_file_name = os.path.join(self.target, "converters", "jniconverter.py")
+		logging.debug("default_jni_converters_file_name " + str(default_jni_converters_file_name))
+		self.config_module = ConfigModule(default_jni_converters_file_name,None)
+		assert self.config_module.is_valid, "config_module is not valid"
+		config_data = self.config_module.config_data
+		assert config_data is not None, "config does not exist"
+		assert "converters" in config_data, "converters not in config"
+		self.default_converters.extend(config_data["converters"])
 		self.config_module = None
 		logging.debug("_setup_default_converters exit")
 
@@ -247,7 +259,7 @@ class Generator(BaseGenerator):
 		if not os.path.exists(self.proxy_converter_outdir_name):
 			os.makedirs(self.proxy_converter_outdir_name)		
 		logging.debug("self.proxy_converter_outdir_name " + str(self.proxy_converter_outdir_name))
-		self._generate_cxx_proxy_converter_code()
+		self._generate_cxx_converter_code()
 		self.impl_outdir_name = os.path.join(self.output_dir_name, "project", self.package_name, "jni", "cxx", "impl")
 		if not os.path.exists(self.impl_outdir_name):
 			os.makedirs(self.impl_outdir_name)		
@@ -259,8 +271,8 @@ class Generator(BaseGenerator):
 		self.config_module = None
 		logging.debug("_generate_cxx_code exit")
 
-	def _generate_cxx_proxy_converter_code(self):
-		logging.debug("_generate_cxx_proxy_converter_code enter")
+	def _generate_cxx_converter_code(self):
+		logging.debug("_generate_cxx_converter_code enter")
 		self.proxy_converter_head_file_name = self.package_name + "Converter.hpp"
 		logging.debug("proxy_converter_head_file_name " + str(self.proxy_converter_head_file_name))	
 		proxy_converter_head_file_path = os.path.join(self.proxy_converter_outdir_name, self.proxy_converter_head_file_name)
@@ -287,7 +299,7 @@ class Generator(BaseGenerator):
 		self.proxy_converter_impl_file.close()
 		self.proxy_converter_impl_file = None
 		self.proxy_converter_impl_file_name = None
-		logging.debug("_generate_cxx_proxy_converter_code exit")
+		logging.debug("_generate_cxx_converter_code exit")
 
 	def _generate_cxx_class_code(self):
 		logging.debug("_generate_cxx_class_code enter")
@@ -1040,21 +1052,24 @@ class ConfigModule(object):
 						if not no_proxy:
 							convertible["converter"] = 'convert_proxy'					
 		if "converter" not in convertible:
+			if jindex.ArrayType.is_array_id(convertible['type']):
+				convertible['converter'] = 'convert_' + convertible['type']
+		if "converter" not in convertible:
 			converters = config_data["converters"]
 			for converter in converters:
 				if "java" in converter:
-						if "cxx" in converter:
-							if 	jindex.PrimitiveType.is_primitive_id(convertible["type"]) or\
-								jindex.VoidType.is_void_id(convertible["type"]) or\
-								jindex.ArrayType.is_array_id(convertible["type"]) or\
-							   	jindex.PrimitiveType.is_primitive_id(converter["java"]["type"]) or\
-							   	jindex.VoidType.is_void_id(converter["java"]["type"]) or\
-							   	jindex.ArrayType.is_array_id(converter["java"]["type"]):
-								if convertible["type"] == converter["java"]["type"]:
-									convertible["converter"] = converter["name"]
-							else:
-								if jindex.TypeHierarchy.canCastClass1ToClass2(convertible["type"],converter["java"]["type"]):
-									convertible["converter"] = converter["name"]
+					if "cxx" in converter:
+						if convertible["type"] == converter["java"]["type"]:
+							convertible["converter"] = converter["name"]
+							break
+		if "converter" not in convertible:
+			converters = config_data["converters"]
+			for converter in converters:
+				if "java" in converter:
+					if "cxx" in converter:
+						if jindex.TypeHierarchy.canCastClass1ToClass2(convertible["type"],converter["java"]["type"]):
+							convertible["converter"] = converter["name"]
+							break
 		if "converter" not in convertible:
 			convertible["converter"] = "_TODO_"
 		if "children" in convertible:
@@ -1284,45 +1299,28 @@ class ConfigModule(object):
 					typeinfo['isproxied'] = True
 					typeinfo['typename'] = type_name
 					break
+			elif type_config['converter'] == 'convert__array_array_type':
+				child_type_config = type_config['children'][0]['children'][0]
+				#TODO: Currently supportint STL by default support Boost to defaults
+				namespaced_child_classes = self.list_all_namespaced_classes(tags=None,xtags=None,name=child_type_config['type'])
+				for namespaced_child_class in namespaced_child_classes:					
+					child_clazz = namespaced_child_class["clazz"]
+					typeinfo['namespace'] = namespaced_child_class['namespace']
+					child_type_name = child_clazz['name']
+					child_type_name = Utils.to_class_name(child_type_name)					
+					typeinfo['typename'] = 'std::vector<std::vector<' + child_type_name + '> >'
+					typeinfo['typeconverter'] = 'convert_' + child_type_name + '_array_array_type'
 			elif type_config['converter'] == 'convert__object_array_type':
-				temp_config_stack = list()	
-				temp_config = type_config			
-				while True:
-					if 'children' in temp_config:
-						temp_config = temp_config['children'][0]
-						temp_config_stack.append(temp_config)
-						temp_type_name = temp_config['type']
-						if not jindex.ArrayType.is_array_id(temp_type_name):						
-							break
-				type_name = ""
-				if len(temp_config_stack) == 0:
-					class_name = "java.lang.Object"
-					namespaced_classes = self.list_all_namespaced_classes(tags=None,xtags=None,name=class_name)
-					for namespaced_class in namespaced_classes:
-						clazz = namespaced_class["clazz"]
-						class_name = clazz['name']
-						class_name = Utils.to_class_name(class_name)
-						type_name = "<" + namespaced_class['namespace'] + "::" + class_name + ">"
-						break
-				else:
-					while len(temp_config_stack) > 0:
-						temp_config = temp_config_stack.pop()
-						temp_name = temp_config['type']
-						if jindex.ArrayType.is_array_id(temp_name):
-							type_name = "<" + "std::vector" + type_name + " >"
-						elif temp_config['converter'] == 'convert_proxy':
-							namespaced_classes = self.list_all_namespaced_classes(tags=None,xtags=None,name=temp_name)
-							for namespaced_class in namespaced_classes:
-								clazz = namespaced_class["clazz"]
-								class_name = clazz['name']
-								temp_name = namespaced_class["namespace"] + "::" + class_name
-								temp_name = Utils.to_class_name(temp_name)
-								type_name = "<" + temp_name + type_name + " >"
-								break
-						else:
-							type_name = "<" + temp_name + type_name + " >"
-				typeinfo['typename'] = "std::vector" + type_name 
-				typeinfo['typeconverter'] = type_config['converter']
+				child_type_config = type_config['children'][0]
+				#TODO: Currently supportint STL by default support Boost to defaults
+				namespaced_child_classes = self.list_all_namespaced_classes(tags=None,xtags=None,name=child_type_config['type'])
+				for namespaced_child_class in namespaced_child_classes:					
+					child_clazz = namespaced_child_class["clazz"]
+					typeinfo['namespace'] = namespaced_child_class['namespace']
+					child_type_name = child_clazz['name']
+					child_type_name = Utils.to_class_name(child_type_name)					
+					typeinfo['typename'] = 'std::vector<' + child_type_name + '>'
+					typeinfo['typeconverter'] = 'convert_' + child_type_name + '_array_type'
 			else:
 				converters = self.list_all_converters(name=type_config['converter'],cxx_type=None,java_type=None)
 				for converter in converters:

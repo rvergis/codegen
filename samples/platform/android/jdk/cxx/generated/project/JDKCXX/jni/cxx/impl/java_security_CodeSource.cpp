@@ -40,11 +40,8 @@
 #include <jni.h>
 #include <CXXContext.hpp>
 #include <JNIContext.hpp>
-// TODO: integrate with custom converters
 #include <CXXConverter.hpp>
 #include <JDKCXXConverter.hpp>
-// TODO: FIXME: add include package
-// FIXME: remove after testing
 
 #define LOG_TAG "java_security_CodeSource"
 #define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
@@ -144,9 +141,9 @@ Proxy java_security_CodeSource::proxy() const
 
 	return proxy;
 }
-java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<JDKCXX::java_security_CodeSigner > const& arg1)
+java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<java_security_CodeSigner> const& arg1)
 {
-	LOGV("java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<JDKCXX::java_security_CodeSigner > const& arg1) enter");	
+	LOGV("java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<java_security_CodeSigner> const& arg1) enter");	
 
 	const char *methodName = "<init>";
 	const char *methodSignature = "(Ljava/net/URL;[Ljava/security/CodeSigner;)V";
@@ -222,7 +219,7 @@ java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& a
 				}
 			}
 			converter_t converter_type = (converter_t) CONVERT_TO_JAVA;
-			convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+			convert_java_security_CodeSigner_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 
 			// Convert to JNI
 			jarg1 = convert_jni__object_array_type_to_jni(java_value);
@@ -238,11 +235,11 @@ java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& a
 
 	jni->popLocalFrame();
 
-	LOGV("java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<JDKCXX::java_security_CodeSigner > const& arg1) exit");	
+	LOGV("java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<java_security_CodeSigner> const& arg1) exit");	
 }
-java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<JDKCXX::java_security_cert_Certificate > const& arg1)
+java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<java_security_cert_Certificate> const& arg1)
 {
-	LOGV("java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<JDKCXX::java_security_cert_Certificate > const& arg1) enter");	
+	LOGV("java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<java_security_cert_Certificate> const& arg1) enter");	
 
 	const char *methodName = "<init>";
 	const char *methodSignature = "(Ljava/net/URL;[Ljava/security/cert/Certificate;)V";
@@ -318,7 +315,7 @@ java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& a
 				}
 			}
 			converter_t converter_type = (converter_t) CONVERT_TO_JAVA;
-			convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+			convert_java_security_cert_Certificate_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 
 			// Convert to JNI
 			jarg1 = convert_jni__object_array_type_to_jni(java_value);
@@ -334,7 +331,7 @@ java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& a
 
 	jni->popLocalFrame();
 
-	LOGV("java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<JDKCXX::java_security_cert_Certificate > const& arg1) exit");	
+	LOGV("java_security_CodeSource::java_security_CodeSource(JDKCXX::java_net_URL const& arg0,std::vector<java_security_cert_Certificate> const& arg1) exit");	
 }
 // Default Instance Destructor
 java_security_CodeSource::~java_security_CodeSource()
@@ -548,9 +545,9 @@ JDKCXX::java_net_URL java_security_CodeSource::getLocation()
 
 	return result;
 }
-std::vector<JDKCXX::java_security_cert_Certificate > java_security_CodeSource::getCertificates()
+std::vector<java_security_cert_Certificate> java_security_CodeSource::getCertificates()
 {
-	LOGV("std::vector<JDKCXX::java_security_cert_Certificate > java_security_CodeSource::getCertificates() enter");
+	LOGV("std::vector<java_security_cert_Certificate> java_security_CodeSource::getCertificates() enter");
 
 	const char *methodName = "getCertificates";
 	const char *methodSignature = "()[Ljava/security/cert/Certificate;";
@@ -600,13 +597,13 @@ std::vector<JDKCXX::java_security_cert_Certificate > java_security_CodeSource::g
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_security_cert_Certificate_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_security_cert_Certificate > result = (std::vector<JDKCXX::java_security_cert_Certificate >) *((std::vector<JDKCXX::java_security_cert_Certificate > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_security_cert_Certificate > *) cxx_value);
+	std::vector<java_security_cert_Certificate> result = (std::vector<java_security_cert_Certificate>) *((std::vector<java_security_cert_Certificate> *) cxx_value);
+	delete ((std::vector<java_security_cert_Certificate> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_security_cert_Certificate > java_security_CodeSource::getCertificates() exit");
+	LOGV("std::vector<java_security_cert_Certificate> java_security_CodeSource::getCertificates() exit");
 
 	return result;
 }
@@ -675,9 +672,9 @@ bool java_security_CodeSource::implies(JDKCXX::java_security_CodeSource const& a
 
 	return result;
 }
-std::vector<JDKCXX::java_security_CodeSigner > java_security_CodeSource::getCodeSigners()
+std::vector<java_security_CodeSigner> java_security_CodeSource::getCodeSigners()
 {
-	LOGV("std::vector<JDKCXX::java_security_CodeSigner > java_security_CodeSource::getCodeSigners() enter");
+	LOGV("std::vector<java_security_CodeSigner> java_security_CodeSource::getCodeSigners() enter");
 
 	const char *methodName = "getCodeSigners";
 	const char *methodSignature = "()[Ljava/security/CodeSigner;";
@@ -727,13 +724,13 @@ std::vector<JDKCXX::java_security_CodeSigner > java_security_CodeSource::getCode
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_security_CodeSigner_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_security_CodeSigner > result = (std::vector<JDKCXX::java_security_CodeSigner >) *((std::vector<JDKCXX::java_security_CodeSigner > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_security_CodeSigner > *) cxx_value);
+	std::vector<java_security_CodeSigner> result = (std::vector<java_security_CodeSigner>) *((std::vector<java_security_CodeSigner> *) cxx_value);
+	delete ((std::vector<java_security_CodeSigner> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_security_CodeSigner > java_security_CodeSource::getCodeSigners() exit");
+	LOGV("std::vector<java_security_CodeSigner> java_security_CodeSource::getCodeSigners() exit");
 
 	return result;
 }

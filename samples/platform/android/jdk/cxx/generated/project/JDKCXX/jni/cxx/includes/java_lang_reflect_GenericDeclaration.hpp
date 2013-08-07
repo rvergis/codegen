@@ -64,7 +64,7 @@ public:
 	// Default Destructor
 	virtual ~java_lang_reflect_GenericDeclaration();
 	// Functions
-	 std::vector<JDKCXX::java_lang_reflect_TypeVariable > getTypeParameters();
+	 std::vector<java_lang_reflect_TypeVariable> getTypeParameters();
 };	
 
 } // namespace

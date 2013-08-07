@@ -131,9 +131,9 @@ public:
 	 JDKCXX::java_lang_String getLanguage();
 	static JDKCXX::java_util_Locale getDefault();
 	static void setDefault(JDKCXX::java_util_Locale const& arg0);
-	static std::vector<JDKCXX::java_util_Locale > getAvailableLocales();
-	static std::vector<JDKCXX::java_lang_String > getISOCountries();
-	static std::vector<JDKCXX::java_lang_String > getISOLanguages();
+	static std::vector<java_util_Locale> getAvailableLocales();
+	static std::vector<java_lang_String> getISOCountries();
+	static std::vector<java_lang_String> getISOLanguages();
 	 JDKCXX::java_lang_String getCountry();
 	 JDKCXX::java_lang_String getVariant();
 	 JDKCXX::java_lang_String getISO3Language();

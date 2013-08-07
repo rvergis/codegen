@@ -156,7 +156,7 @@ public:
 	 bool isSynthetic();
 	 JDKCXX::java_lang_Class getDeclaringClass();
 	 JDKCXX::java_lang_annotation_Annotation getAnnotation(JDKCXX::java_lang_Class const& arg0);
-	 std::vector<JDKCXX::java_lang_annotation_Annotation > getDeclaredAnnotations();
+	 std::vector<java_lang_annotation_Annotation> getDeclaredAnnotations();
 	 bool isEnumConstant();
 	 JDKCXX::java_lang_Class getType();
 	 JDKCXX::java_lang_reflect_Type getGenericType();

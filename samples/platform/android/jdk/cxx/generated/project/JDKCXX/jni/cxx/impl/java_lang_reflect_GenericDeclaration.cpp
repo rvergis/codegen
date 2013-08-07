@@ -22,11 +22,8 @@
 #include <jni.h>
 #include <CXXContext.hpp>
 #include <JNIContext.hpp>
-// TODO: integrate with custom converters
 #include <CXXConverter.hpp>
 #include <JDKCXXConverter.hpp>
-// TODO: FIXME: add include package
-// FIXME: remove after testing
 
 #define LOG_TAG "java_lang_reflect_GenericDeclaration"
 #define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
@@ -114,9 +111,9 @@ java_lang_reflect_GenericDeclaration::~java_lang_reflect_GenericDeclaration()
 	LOGV("java_lang_reflect_GenericDeclaration::~java_lang_reflect_GenericDeclaration() exit");
 }
 // Functions
-std::vector<JDKCXX::java_lang_reflect_TypeVariable > java_lang_reflect_GenericDeclaration::getTypeParameters()
+std::vector<java_lang_reflect_TypeVariable> java_lang_reflect_GenericDeclaration::getTypeParameters()
 {
-	LOGV("std::vector<JDKCXX::java_lang_reflect_TypeVariable > java_lang_reflect_GenericDeclaration::getTypeParameters() enter");
+	LOGV("std::vector<java_lang_reflect_TypeVariable> java_lang_reflect_GenericDeclaration::getTypeParameters() enter");
 
 	const char *methodName = "getTypeParameters";
 	const char *methodSignature = "()[Ljava/lang/reflect/TypeVariable;";
@@ -184,13 +181,13 @@ std::vector<JDKCXX::java_lang_reflect_TypeVariable > java_lang_reflect_GenericDe
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_reflect_TypeVariable_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_reflect_TypeVariable > result = (std::vector<JDKCXX::java_lang_reflect_TypeVariable >) *((std::vector<JDKCXX::java_lang_reflect_TypeVariable > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_reflect_TypeVariable > *) cxx_value);
+	std::vector<java_lang_reflect_TypeVariable> result = (std::vector<java_lang_reflect_TypeVariable>) *((std::vector<java_lang_reflect_TypeVariable> *) cxx_value);
+	delete ((std::vector<java_lang_reflect_TypeVariable> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_reflect_TypeVariable > java_lang_reflect_GenericDeclaration::getTypeParameters() exit");
+	LOGV("std::vector<java_lang_reflect_TypeVariable> java_lang_reflect_GenericDeclaration::getTypeParameters() exit");
 
 	return result;
 }

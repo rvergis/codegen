@@ -26,11 +26,8 @@
 #include <jni.h>
 #include <CXXContext.hpp>
 #include <JNIContext.hpp>
-// TODO: integrate with custom converters
 #include <CXXConverter.hpp>
 #include <JDKCXXConverter.hpp>
-// TODO: FIXME: add include package
-// FIXME: remove after testing
 
 #define LOG_TAG "java_lang_reflect_TypeVariable"
 #define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
@@ -171,9 +168,9 @@ JDKCXX::java_lang_String java_lang_reflect_TypeVariable::getName()
 
 	return result;
 }
-std::vector<JDKCXX::java_lang_reflect_Type > java_lang_reflect_TypeVariable::getBounds()
+std::vector<java_lang_reflect_Type> java_lang_reflect_TypeVariable::getBounds()
 {
-	LOGV("std::vector<JDKCXX::java_lang_reflect_Type > java_lang_reflect_TypeVariable::getBounds() enter");
+	LOGV("std::vector<java_lang_reflect_Type> java_lang_reflect_TypeVariable::getBounds() enter");
 
 	const char *methodName = "getBounds";
 	const char *methodSignature = "()[Ljava/lang/reflect/Type;";
@@ -223,13 +220,13 @@ std::vector<JDKCXX::java_lang_reflect_Type > java_lang_reflect_TypeVariable::get
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_reflect_Type_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_reflect_Type > result = (std::vector<JDKCXX::java_lang_reflect_Type >) *((std::vector<JDKCXX::java_lang_reflect_Type > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_reflect_Type > *) cxx_value);
+	std::vector<java_lang_reflect_Type> result = (std::vector<java_lang_reflect_Type>) *((std::vector<java_lang_reflect_Type> *) cxx_value);
+	delete ((std::vector<java_lang_reflect_Type> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_reflect_Type > java_lang_reflect_TypeVariable::getBounds() exit");
+	LOGV("std::vector<java_lang_reflect_Type> java_lang_reflect_TypeVariable::getBounds() exit");
 
 	return result;
 }

@@ -10,6 +10,13 @@
 
  		 
  		 
+	
+	
+ 		 
+ 		 
+ 		 
+ 		 
+ 	
  		 
  		 
  	
@@ -21,18 +28,19 @@
  	
  		 
 	
- 	
  		 
  		 
- 		 
- 	
- 		 
- 		 
- 	
- 		 
+	
+
+
  		 
  	
  		 
+
+
+
+
+
 
 
 
@@ -57,8 +65,8 @@
 
 // Generated Code 
 
-#ifndef _java_util_Collection
-#define _java_util_Collection
+#ifndef _java_util_ArrayList
+#define _java_util_ArrayList
 //
 // Scroll Down 
 //
@@ -66,8 +74,7 @@
 
 #include <java_lang_Object.hpp>
 
-
-#include <java_util_Iterator.hpp>
+#include <java_util_Collection.hpp>
 
 #include <vector>
 #include <map>
@@ -89,34 +96,39 @@ class java_lang_Object;
 
 class java_util_Collection;
 
-class java_util_Iterator;
-
-class java_util_Collection
+class java_util_ArrayList
 {
 public:
 
-	java_util_Collection(const java_util_Collection& cc);
-	java_util_Collection(Proxy proxy);
+	java_util_ArrayList(const java_util_ArrayList& cc);
+	java_util_ArrayList(Proxy proxy);
 	// Public Constructors
+	java_util_ArrayList(int const& arg0);
+	java_util_ArrayList();
+	java_util_ArrayList(JDKCXX::java_util_Collection const& arg0);
 	Proxy proxy() const;	
 	// Default Destructor
-	virtual ~java_util_Collection();
+	virtual ~java_util_ArrayList();
 	// Functions
+	 void add(int const& arg0,JDKCXX::java_lang_Object const& arg1);
 	 bool add(JDKCXX::java_lang_Object const& arg0);
-	 bool equals(JDKCXX::java_lang_Object const& arg0);
-	 int hashCode();
+	 JDKCXX::java_lang_Object get(int const& arg0);
+	 JDKCXX::java_lang_Object clone();
+	 int indexOf(JDKCXX::java_lang_Object const& arg0);
 	 void clear();
 	 bool isEmpty();
+	 int lastIndexOf(JDKCXX::java_lang_Object const& arg0);
 	 bool contains(JDKCXX::java_lang_Object const& arg0);
 	 bool addAll(JDKCXX::java_util_Collection const& arg0);
+	 bool addAll(int const& arg0,JDKCXX::java_util_Collection const& arg1);
 	 int size();
 	 std::vector<java_lang_Object> toArray(std::vector<java_lang_Object> const& arg0);
 	 std::vector<java_lang_Object> toArray();
-	 JDKCXX::java_util_Iterator iterator();
+	 JDKCXX::java_lang_Object remove(int const& arg0);
 	 bool remove(JDKCXX::java_lang_Object const& arg0);
-	 bool removeAll(JDKCXX::java_util_Collection const& arg0);
-	 bool containsAll(JDKCXX::java_util_Collection const& arg0);
-	 bool retainAll(JDKCXX::java_util_Collection const& arg0);
+	 JDKCXX::java_lang_Object set(int const& arg0,JDKCXX::java_lang_Object const& arg1);
+	 void ensureCapacity(int const& arg0);
+	 void trimToSize();
 };	
 
 } // namespace
@@ -125,4 +137,4 @@ public:
 }
 #endif //__cplusplus
 
-#endif // _java_util_Collection
+#endif // _java_util_ArrayList

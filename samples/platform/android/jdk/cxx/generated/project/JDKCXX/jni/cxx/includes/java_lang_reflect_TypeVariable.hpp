@@ -71,7 +71,7 @@ public:
 	virtual ~java_lang_reflect_TypeVariable();
 	// Functions
 	 JDKCXX::java_lang_String getName();
-	 std::vector<JDKCXX::java_lang_reflect_Type > getBounds();
+	 std::vector<java_lang_reflect_Type> getBounds();
 	 JDKCXX::java_lang_reflect_GenericDeclaration getGenericDeclaration();
 };	
 

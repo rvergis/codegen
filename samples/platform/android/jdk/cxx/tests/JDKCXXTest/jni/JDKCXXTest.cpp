@@ -10,6 +10,8 @@
 #include <java_net_URL.hpp>
 #include <java_io_InputStream.hpp>
 
+#include <java_util_ArrayList.hpp>
+
 #include <java_util_Map.hpp>
 #include <java_util_Map_Entry.hpp>
 #include <java_util_HashMap.hpp>
@@ -168,6 +170,18 @@ void test_java_util_Map()
 	LOGI("test_java_util_Map exit");
 }
 
+void test_java_util_List()
+{
+	LOGI("test_java_util_List enter");
+	java_util_ArrayList list;
+	java_lang_Object val1;
+	java_lang_Object val2;
+	list.add(val1);
+	list.add(val2);
+//	std::vector<java_lang_Object> arr = list.toArray();
+	LOGI("test_java_util_List exit");
+}
+
 void test_callbacks()
 {
 	CXXContext *ctx = CXXContext::sharedInstance();
@@ -191,10 +205,11 @@ JNIEXPORT void JNICALL Java_com_cxx_bindings_samples_jdk_MainActivity_testJDKCXX
 {
 	LOGI("Java_com_cxx_bindings_samples_jdk_MainActivity_testJDKCXXFull enter");
 
-	test_java_lang_String();
-	test_java_net_URLConnection();
-	test_java_util_Map();
-	test_callbacks();
+//	test_java_lang_String();
+//	test_java_net_URLConnection();
+//	test_java_util_Map();
+	test_java_util_List();
+//	test_callbacks();
 
 	LOGI("Java_com_cxx_bindings_samples_jdk_MainActivity_testJDKCXXFull exit");
 }

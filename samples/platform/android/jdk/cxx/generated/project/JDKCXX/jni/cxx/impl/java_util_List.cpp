@@ -66,11 +66,8 @@
 #include <jni.h>
 #include <CXXContext.hpp>
 #include <JNIContext.hpp>
-// TODO: integrate with custom converters
 #include <CXXConverter.hpp>
 #include <JDKCXXConverter.hpp>
-// TODO: FIXME: add include package
-// FIXME: remove after testing
 
 #define LOG_TAG "java_util_List"
 #define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
@@ -1020,9 +1017,9 @@ int java_util_List::size()
 
 	return result;
 }
-std::vector<JDKCXX::java_lang_Object > java_util_List::toArray(std::vector<JDKCXX::java_lang_Object > const& arg0)
+std::vector<java_lang_Object> java_util_List::toArray(std::vector<java_lang_Object> const& arg0)
 {
-	LOGV("std::vector<JDKCXX::java_lang_Object > java_util_List::toArray(std::vector<JDKCXX::java_lang_Object > const& arg0) enter");
+	LOGV("std::vector<java_lang_Object> java_util_List::toArray(std::vector<java_lang_Object> const& arg0) enter");
 
 	const char *methodName = "toArray";
 	const char *methodSignature = "([Ljava/lang/Object;)[Ljava/lang/Object;";
@@ -1072,7 +1069,7 @@ std::vector<JDKCXX::java_lang_Object > java_util_List::toArray(std::vector<JDKCX
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_JAVA;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_Object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 
 		// Convert to JNI
 		jarg0 = convert_jni__object_array_type_to_jni(java_value);
@@ -1111,19 +1108,19 @@ std::vector<JDKCXX::java_lang_Object > java_util_List::toArray(std::vector<JDKCX
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_Object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_Object > result = (std::vector<JDKCXX::java_lang_Object >) *((std::vector<JDKCXX::java_lang_Object > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_Object > *) cxx_value);
+	std::vector<java_lang_Object> result = (std::vector<java_lang_Object>) *((std::vector<java_lang_Object> *) cxx_value);
+	delete ((std::vector<java_lang_Object> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_Object > java_util_List::toArray(std::vector<JDKCXX::java_lang_Object > const& arg0) exit");
+	LOGV("std::vector<java_lang_Object> java_util_List::toArray(std::vector<java_lang_Object> const& arg0) exit");
 
 	return result;
 }
-std::vector<JDKCXX::java_lang_Object > java_util_List::toArray()
+std::vector<java_lang_Object> java_util_List::toArray()
 {
-	LOGV("std::vector<JDKCXX::java_lang_Object > java_util_List::toArray() enter");
+	LOGV("std::vector<java_lang_Object> java_util_List::toArray() enter");
 
 	const char *methodName = "toArray";
 	const char *methodSignature = "()[Ljava/lang/Object;";
@@ -1173,13 +1170,13 @@ std::vector<JDKCXX::java_lang_Object > java_util_List::toArray()
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_Object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_Object > result = (std::vector<JDKCXX::java_lang_Object >) *((std::vector<JDKCXX::java_lang_Object > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_Object > *) cxx_value);
+	std::vector<java_lang_Object> result = (std::vector<java_lang_Object>) *((std::vector<java_lang_Object> *) cxx_value);
+	delete ((std::vector<java_lang_Object> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_Object > java_util_List::toArray() exit");
+	LOGV("std::vector<java_lang_Object> java_util_List::toArray() exit");
 
 	return result;
 }

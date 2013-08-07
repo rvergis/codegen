@@ -74,11 +74,8 @@
 #include <jni.h>
 #include <CXXContext.hpp>
 #include <JNIContext.hpp>
-// TODO: integrate with custom converters
 #include <CXXConverter.hpp>
 #include <JDKCXXConverter.hpp>
-// TODO: FIXME: add include package
-// FIXME: remove after testing
 
 #define LOG_TAG "java_util_Locale"
 #define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
@@ -817,9 +814,9 @@ void java_util_Locale::setDefault(JDKCXX::java_util_Locale const& arg0)
 	LOGV("void java_util_Locale::setDefault(JDKCXX::java_util_Locale const& arg0) exit");
 
 }
-std::vector<JDKCXX::java_util_Locale > java_util_Locale::getAvailableLocales()
+std::vector<java_util_Locale> java_util_Locale::getAvailableLocales()
 {
-	LOGV("std::vector<JDKCXX::java_util_Locale > java_util_Locale::getAvailableLocales() enter");
+	LOGV("std::vector<java_util_Locale> java_util_Locale::getAvailableLocales() enter");
 
 	const char *methodName = "getAvailableLocales";
 	const char *methodSignature = "()[Ljava/util/Locale;";
@@ -869,19 +866,19 @@ std::vector<JDKCXX::java_util_Locale > java_util_Locale::getAvailableLocales()
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_util_Locale_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_util_Locale > result = (std::vector<JDKCXX::java_util_Locale >) *((std::vector<JDKCXX::java_util_Locale > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_util_Locale > *) cxx_value);
+	std::vector<java_util_Locale> result = (std::vector<java_util_Locale>) *((std::vector<java_util_Locale> *) cxx_value);
+	delete ((std::vector<java_util_Locale> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_util_Locale > java_util_Locale::getAvailableLocales() exit");
+	LOGV("std::vector<java_util_Locale> java_util_Locale::getAvailableLocales() exit");
 
 	return result;
 }
-std::vector<JDKCXX::java_lang_String > java_util_Locale::getISOCountries()
+std::vector<java_lang_String> java_util_Locale::getISOCountries()
 {
-	LOGV("std::vector<JDKCXX::java_lang_String > java_util_Locale::getISOCountries() enter");
+	LOGV("std::vector<java_lang_String> java_util_Locale::getISOCountries() enter");
 
 	const char *methodName = "getISOCountries";
 	const char *methodSignature = "()[Ljava/lang/String;";
@@ -931,19 +928,19 @@ std::vector<JDKCXX::java_lang_String > java_util_Locale::getISOCountries()
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_String_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_String > result = (std::vector<JDKCXX::java_lang_String >) *((std::vector<JDKCXX::java_lang_String > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_String > *) cxx_value);
+	std::vector<java_lang_String> result = (std::vector<java_lang_String>) *((std::vector<java_lang_String> *) cxx_value);
+	delete ((std::vector<java_lang_String> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_String > java_util_Locale::getISOCountries() exit");
+	LOGV("std::vector<java_lang_String> java_util_Locale::getISOCountries() exit");
 
 	return result;
 }
-std::vector<JDKCXX::java_lang_String > java_util_Locale::getISOLanguages()
+std::vector<java_lang_String> java_util_Locale::getISOLanguages()
 {
-	LOGV("std::vector<JDKCXX::java_lang_String > java_util_Locale::getISOLanguages() enter");
+	LOGV("std::vector<java_lang_String> java_util_Locale::getISOLanguages() enter");
 
 	const char *methodName = "getISOLanguages";
 	const char *methodSignature = "()[Ljava/lang/String;";
@@ -993,13 +990,13 @@ std::vector<JDKCXX::java_lang_String > java_util_Locale::getISOLanguages()
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_String_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_String > result = (std::vector<JDKCXX::java_lang_String >) *((std::vector<JDKCXX::java_lang_String > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_String > *) cxx_value);
+	std::vector<java_lang_String> result = (std::vector<java_lang_String>) *((std::vector<java_lang_String> *) cxx_value);
+	delete ((std::vector<java_lang_String> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_String > java_util_Locale::getISOLanguages() exit");
+	LOGV("std::vector<java_lang_String> java_util_Locale::getISOLanguages() exit");
 
 	return result;
 }

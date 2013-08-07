@@ -54,6 +54,9 @@
 #define convert_jni_string_to_jni(value) ((jstring) value)           
 #define convert_jni_string_to_java(value) ((long) value) 
 
+#define convert_jni__array_array_type_to_jni(value) ((jobjectArray) value)
+#define convert_jni__array_array_type_to_java(value) ((long) value)
+
 #define convert_jni__object_array_type_to_jni(value) ((jobjectArray) value)           
 #define convert_jni__object_array_type_to_java(value) ((long) value) 
 
@@ -105,8 +108,6 @@ void convert_long(long& java_value, long& cxx_value, const CXXTypeHierarchy cxx_
 void convert_float(long& java_value, long& cxx_value, const CXXTypeHierarchy cxx_type_hierarchy, const converter_t& converter_type, std::stack<long>& converter_stack);
 
 void convert_double(long& java_value, long& cxx_value, const CXXTypeHierarchy cxx_type_hierarchy, const converter_t& converter_type, std::stack<long>& converter_stack);
-
-void convert__object_array_type(long& java_value, long& cxx_value, const CXXTypeHierarchy cxx_type_hierarchy, const converter_t& converter_type, std::stack<long>& converter_stack);
 
 void convert__byte_array_type(long& java_value, long& cxx_value, const CXXTypeHierarchy cxx_type_hierarchy, const converter_t& converter_type, std::stack<long>& converter_stack);
 

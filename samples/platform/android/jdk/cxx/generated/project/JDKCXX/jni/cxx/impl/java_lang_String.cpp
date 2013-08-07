@@ -181,11 +181,8 @@
 #include <jni.h>
 #include <CXXContext.hpp>
 #include <JNIContext.hpp>
-// TODO: integrate with custom converters
 #include <CXXConverter.hpp>
 #include <JDKCXXConverter.hpp>
-// TODO: FIXME: add include package
-// FIXME: remove after testing
 
 #define LOG_TAG "java_lang_String"
 #define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
@@ -5819,9 +5816,9 @@ JDKCXX::java_lang_String java_lang_String::replaceAll(JDKCXX::java_lang_String c
 
 	return result;
 }
-std::vector<JDKCXX::java_lang_String > java_lang_String::split(JDKCXX::java_lang_String const& arg0)
+std::vector<java_lang_String> java_lang_String::split(JDKCXX::java_lang_String const& arg0)
 {
-	LOGV("std::vector<JDKCXX::java_lang_String > java_lang_String::split(JDKCXX::java_lang_String const& arg0) enter");
+	LOGV("std::vector<java_lang_String> java_lang_String::split(JDKCXX::java_lang_String const& arg0) enter");
 
 	const char *methodName = "split";
 	const char *methodSignature = "(Ljava/lang/String;)[Ljava/lang/String;";
@@ -5892,19 +5889,19 @@ std::vector<JDKCXX::java_lang_String > java_lang_String::split(JDKCXX::java_lang
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_String_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_String > result = (std::vector<JDKCXX::java_lang_String >) *((std::vector<JDKCXX::java_lang_String > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_String > *) cxx_value);
+	std::vector<java_lang_String> result = (std::vector<java_lang_String>) *((std::vector<java_lang_String> *) cxx_value);
+	delete ((std::vector<java_lang_String> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_String > java_lang_String::split(JDKCXX::java_lang_String const& arg0) exit");
+	LOGV("std::vector<java_lang_String> java_lang_String::split(JDKCXX::java_lang_String const& arg0) exit");
 
 	return result;
 }
-std::vector<JDKCXX::java_lang_String > java_lang_String::split(JDKCXX::java_lang_String const& arg0,int const& arg1)
+std::vector<java_lang_String> java_lang_String::split(JDKCXX::java_lang_String const& arg0,int const& arg1)
 {
-	LOGV("std::vector<JDKCXX::java_lang_String > java_lang_String::split(JDKCXX::java_lang_String const& arg0,int const& arg1) enter");
+	LOGV("std::vector<java_lang_String> java_lang_String::split(JDKCXX::java_lang_String const& arg0,int const& arg1) enter");
 
 	const char *methodName = "split";
 	const char *methodSignature = "(Ljava/lang/String;I)[Ljava/lang/String;";
@@ -5996,13 +5993,13 @@ std::vector<JDKCXX::java_lang_String > java_lang_String::split(JDKCXX::java_lang
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_CXX;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_String_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 	}
 
-	std::vector<JDKCXX::java_lang_String > result = (std::vector<JDKCXX::java_lang_String >) *((std::vector<JDKCXX::java_lang_String > *) cxx_value);
-	delete ((std::vector<JDKCXX::java_lang_String > *) cxx_value);
+	std::vector<java_lang_String> result = (std::vector<java_lang_String>) *((std::vector<java_lang_String> *) cxx_value);
+	delete ((std::vector<java_lang_String> *) cxx_value);
 		
-	LOGV("std::vector<JDKCXX::java_lang_String > java_lang_String::split(JDKCXX::java_lang_String const& arg0,int const& arg1) exit");
+	LOGV("std::vector<java_lang_String> java_lang_String::split(JDKCXX::java_lang_String const& arg0,int const& arg1) exit");
 
 	return result;
 }
@@ -6330,9 +6327,9 @@ std::vector<char> java_lang_String::toCharArray()
 
 	return result;
 }
-JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_lang_String const& arg0,std::vector<JDKCXX::java_lang_Object > const& arg1)
+JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_lang_String const& arg0,std::vector<java_lang_Object> const& arg1)
 {
-	LOGV("JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_lang_String const& arg0,std::vector<JDKCXX::java_lang_Object > const& arg1) enter");
+	LOGV("JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_lang_String const& arg0,std::vector<java_lang_Object> const& arg1) enter");
 
 	const char *methodName = "format";
 	const char *methodSignature = "(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;";
@@ -6403,7 +6400,7 @@ JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_lang_String const
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_JAVA;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_Object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 
 		// Convert to JNI
 		jarg1 = convert_jni__object_array_type_to_jni(java_value);
@@ -6430,13 +6427,13 @@ JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_lang_String const
 	JDKCXX::java_lang_String result((JDKCXX::java_lang_String) *((JDKCXX::java_lang_String *) cxx_value));
 	delete ((JDKCXX::java_lang_String *) cxx_value);
 		
-	LOGV("JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_lang_String const& arg0,std::vector<JDKCXX::java_lang_Object > const& arg1) exit");
+	LOGV("JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_lang_String const& arg0,std::vector<java_lang_Object> const& arg1) exit");
 
 	return result;
 }
-JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_util_Locale const& arg0,JDKCXX::java_lang_String const& arg1,std::vector<JDKCXX::java_lang_Object > const& arg2)
+JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_util_Locale const& arg0,JDKCXX::java_lang_String const& arg1,std::vector<java_lang_Object> const& arg2)
 {
-	LOGV("JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_util_Locale const& arg0,JDKCXX::java_lang_String const& arg1,std::vector<JDKCXX::java_lang_Object > const& arg2) enter");
+	LOGV("JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_util_Locale const& arg0,JDKCXX::java_lang_String const& arg1,std::vector<java_lang_Object> const& arg2) enter");
 
 	const char *methodName = "format";
 	const char *methodSignature = "(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;";
@@ -6528,7 +6525,7 @@ JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_util_Locale const
 			}
 		}
 		converter_t converter_type = (converter_t) CONVERT_TO_JAVA;
-		convert__object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
+		convert_java_lang_Object_array_type(java_value,cxx_value,cxx_type_hierarchy,converter_type,converter_stack);
 
 		// Convert to JNI
 		jarg2 = convert_jni__object_array_type_to_jni(java_value);
@@ -6555,7 +6552,7 @@ JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_util_Locale const
 	JDKCXX::java_lang_String result((JDKCXX::java_lang_String) *((JDKCXX::java_lang_String *) cxx_value));
 	delete ((JDKCXX::java_lang_String *) cxx_value);
 		
-	LOGV("JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_util_Locale const& arg0,JDKCXX::java_lang_String const& arg1,std::vector<JDKCXX::java_lang_Object > const& arg2) exit");
+	LOGV("JDKCXX::java_lang_String java_lang_String::format(JDKCXX::java_util_Locale const& arg0,JDKCXX::java_lang_String const& arg1,std::vector<java_lang_Object> const& arg2) exit");
 
 	return result;
 }

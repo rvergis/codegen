@@ -181,7 +181,7 @@ public:
 	 JDKCXX::java_lang_String toExternalForm();
 	 JDKCXX::java_net_URLConnection openConnection(JDKCXX::java_net_Proxy const& arg0);
 	 JDKCXX::java_net_URLConnection openConnection();
-	 JDKCXX::java_lang_Object getContent(std::vector<JDKCXX::java_lang_Class > const& arg0);
+	 JDKCXX::java_lang_Object getContent(std::vector<java_lang_Class> const& arg0);
 	 JDKCXX::java_lang_Object getContent();
 	static void setURLStreamHandlerFactory(JDKCXX::java_net_URLStreamHandlerFactory const& arg0);
 };	

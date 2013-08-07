@@ -39,6 +39,91 @@ config = {
 	'package'	: 'JDKCXX',
 	'converters' : [
 		{
+			'cxx' : {'type': 'void'},
+			'java' : {'type': 'void'},
+			'name' : 'convert_void',
+		},
+		{
+			'cxx' : {'type': 'bool'},
+			'java' : {'type': 'boolean'},
+			'name' : 'convert_boolean',
+		},
+		{
+			'cxx' : {'type': 'byte'},
+			'java' : {'type': 'byte'},
+			'name' : 'convert_byte',
+		},
+		{
+			'cxx' : {'type': 'char'},
+			'java' : {'type': 'char'},
+			'name' : 'convert_char',
+		},
+		{
+			'cxx' : {'type': 'short'},
+			'java' : {'type': 'short'},
+			'name' : 'convert_short',
+		},
+		{
+			'cxx' : {'type': 'int'},
+			'java' : {'type': 'int'},
+			'name' : 'convert_int',
+		},
+		{
+			'cxx' : {'type': 'long'},
+			'java' : {'type': 'long'},
+			'name' : 'convert_long',
+		},
+		{
+			'cxx' : {'type': 'float'},
+			'java' : {'type': 'float'},
+			'name' : 'convert_float',
+		},
+		{
+			'cxx' : {'type': 'double'},
+			'java' : {'type': 'double'},
+			'name' : 'convert_double',
+		},
+		{
+			'cxx' : {'type': 'std::vector<bool>'},
+			'java' : {'type': '_boolean_array_type'},
+			'name' : 'convert__boolean_array_type',
+		},
+		{
+			'cxx' : {'type': 'std::vector<byte>'},
+			'java' : {'type': '_byte_array_type'},
+			'name' : 'convert__byte_array_type',
+		},
+		{
+			'cxx' : {'type': 'std::vector<char>'},
+			'java' : {'type': '_char_array_type'},
+			'name' : 'convert__char_array_type',
+		},
+		{
+			'cxx' : {'type': 'std::vector<short>'},
+			'java' : {'type': '_short_array_type'},
+			'name' : 'convert__short_array_type',
+		},
+		{
+			'cxx' : {'type': 'std::vector<int>'},
+			'java' : {'type': '_int_array_type'},
+			'name' : 'convert__int_array_type',
+		},
+		{
+			'cxx' : {'type': 'std::vector<long>'},
+			'java' : {'type': '_long_array_type'},
+			'name' : 'convert__long_array_type',
+		},
+		{
+			'cxx' : {'type': 'std::vector<float>'},
+			'java' : {'type': '_float_array_type'},
+			'name' : 'convert__float_array_type',
+		},
+		{
+			'cxx' : {'type': 'std::vector<double>'},
+			'java' : {'type': '_double_array_type'},
+			'name' : 'convert__double_array_type',
+		},
+		{
 			'jni' : {'type': 'void'},
 			'java' : {'type': 'void'},
 			'name' : 'convert_jni_void',
@@ -95,6 +180,11 @@ config = {
 		},
 		{
 			'jni' : {'type': 'jobjectArray'},
+			'java' : {'type': '_array_array_type'},
+			'name' : 'convert_jni__array_array_type',
+		},
+		{
+			'jni' : {'type': 'jobjectArray'},
 			'java' : {'type': '_object_array_type'},
 			'name' : 'convert_jni__object_array_type',
 		},
@@ -137,96 +227,6 @@ config = {
 			'jni' : {'type': 'jcharArray'},
 			'java' : {'type': '_char_array_type'},
 			'name' : 'convert_jni__char_array_type',
-		},
-		{
-			'cxx' : {'type': 'void'},
-			'java' : {'type': 'void'},
-			'name' : 'convert_void',
-		},
-		{
-			'cxx' : {'type': 'bool'},
-			'java' : {'type': 'boolean'},
-			'name' : 'convert_boolean',
-		},
-		{
-			'cxx' : {'type': 'byte'},
-			'java' : {'type': 'byte'},
-			'name' : 'convert_byte',
-		},
-		{
-			'cxx' : {'type': 'char'},
-			'java' : {'type': 'char'},
-			'name' : 'convert_char',
-		},
-		{
-			'cxx' : {'type': 'short'},
-			'java' : {'type': 'short'},
-			'name' : 'convert_short',
-		},
-		{
-			'cxx' : {'type': 'int'},
-			'java' : {'type': 'int'},
-			'name' : 'convert_int',
-		},
-		{
-			'cxx' : {'type': 'long'},
-			'java' : {'type': 'long'},
-			'name' : 'convert_long',
-		},
-		{
-			'cxx' : {'type': 'float'},
-			'java' : {'type': 'float'},
-			'name' : 'convert_float',
-		},
-		{
-			'cxx' : {'type': 'double'},
-			'java' : {'type': 'double'},
-			'name' : 'convert_double',
-		},
-		{
-			'cxx' : {'type': 'std::vector<long>'},
-			'java' : {'type': '_object_array_type'},
-			'name' : 'convert__object_array_type',
-		},
-		{
-			'cxx' : {'type': 'std::vector<byte>'},
-			'java' : {'type': '_byte_array_type'},
-			'name' : 'convert__byte_array_type',
-		},
-		{
-			'cxx' : {'type': 'std::vector<short>'},
-			'java' : {'type': '_short_array_type'},
-			'name' : 'convert__short_array_type',
-		},
-		{
-			'cxx' : {'type': 'std::vector<int>'},
-			'java' : {'type': '_int_array_type'},
-			'name' : 'convert__int_array_type',
-		},
-		{
-			'cxx' : {'type': 'std::vector<long>'},
-			'java' : {'type': '_long_array_type'},
-			'name' : 'convert__long_array_type',
-		},
-		{
-			'cxx' : {'type': 'std::vector<float>'},
-			'java' : {'type': '_float_array_type'},
-			'name' : 'convert__float_array_type',
-		},
-		{
-			'cxx' : {'type': 'std::vector<double>'},
-			'java' : {'type': '_double_array_type'},
-			'name' : 'convert__double_array_type',
-		},
-		{
-			'cxx' : {'type': 'std::vector<bool>'},
-			'java' : {'type': '_boolean_array_type'},
-			'name' : 'convert__boolean_array_type',
-		},
-		{
-			'cxx' : {'type': 'std::vector<char>'},
-			'java' : {'type': '_char_array_type'},
-			'name' : 'convert__char_array_type',
 		},
 	],
 	'packages' : [
@@ -2720,6 +2720,340 @@ config = {
 						{
 								'type' : 'java.util.Map',
 								'children' : [{'type': 'java.lang.Object', 'converter': 'convert_proxy'}, {'type': 'java.lang.Object', 'converter': 'convert_proxy'}],
+								'converter' : 'convert_proxy',
+						},
+					],
+				},
+			],
+		},
+		{
+			'name' : 'java.util.ArrayList',
+			'tags' : ['_instance', '_proxy'],
+			'fields' : [
+			],	
+			'functions' : [
+				{
+					'name' : 'add',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'int',
+								'converter' : 'convert_int',
+						},
+						{
+								'type' : 'java.lang.Object',
+								'converter' : 'convert_proxy',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'void',
+								'converter' : 'convert_void',
+						},
+					],
+				},
+				{
+					'name' : 'add',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'java.lang.Object',
+								'converter' : 'convert_proxy',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'boolean',
+								'converter' : 'convert_boolean',
+						},
+					],
+				},
+				{
+					'name' : 'get',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'int',
+								'converter' : 'convert_int',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'java.lang.Object',
+								'converter' : 'convert_proxy',
+						},
+					],
+				},
+				{
+					'name' : 'clone',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+					],
+					'returns' : [
+						{
+								'type' : 'java.lang.Object',
+								'converter' : 'convert_proxy',
+						},
+					],
+				},
+				{
+					'name' : 'indexOf',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'java.lang.Object',
+								'converter' : 'convert_proxy',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'int',
+								'converter' : 'convert_int',
+						},
+					],
+				},
+				{
+					'name' : 'clear',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+					],
+					'returns' : [
+						{
+								'type' : 'void',
+								'converter' : 'convert_void',
+						},
+					],
+				},
+				{
+					'name' : 'isEmpty',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+					],
+					'returns' : [
+						{
+								'type' : 'boolean',
+								'converter' : 'convert_boolean',
+						},
+					],
+				},
+				{
+					'name' : 'lastIndexOf',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'java.lang.Object',
+								'converter' : 'convert_proxy',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'int',
+								'converter' : 'convert_int',
+						},
+					],
+				},
+				{
+					'name' : 'contains',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'java.lang.Object',
+								'converter' : 'convert_proxy',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'boolean',
+								'converter' : 'convert_boolean',
+						},
+					],
+				},
+				{
+					'name' : 'addAll',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'java.util.Collection',
+								'children' : [{'type': 'java.lang.Object', 'converter': 'convert_proxy'}],
+								'converter' : 'convert_proxy',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'boolean',
+								'converter' : 'convert_boolean',
+						},
+					],
+				},
+				{
+					'name' : 'addAll',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'int',
+								'converter' : 'convert_int',
+						},
+						{
+								'type' : 'java.util.Collection',
+								'children' : [{'type': 'java.lang.Object', 'converter': 'convert_proxy'}],
+								'converter' : 'convert_proxy',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'boolean',
+								'converter' : 'convert_boolean',
+						},
+					],
+				},
+				{
+					'name' : 'size',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+					],
+					'returns' : [
+						{
+								'type' : 'int',
+								'converter' : 'convert_int',
+						},
+					],
+				},
+				{
+					'name' : 'toArray',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : '_object_array_type',
+								'children' : [{'type': 'java.lang.Object', 'converter': 'convert_proxy'}],
+								'converter' : 'convert__object_array_type',
+						},
+					],
+					'returns' : [
+						{
+								'type' : '_object_array_type',
+								'children' : [{'type': 'java.lang.Object', 'converter': 'convert_proxy'}],
+								'converter' : 'convert__object_array_type',
+						},
+					],
+				},
+				{
+					'name' : 'toArray',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+					],
+					'returns' : [
+						{
+								'type' : '_object_array_type',
+								'children' : [{'type': 'java.lang.Object', 'converter': 'convert_proxy'}],
+								'converter' : 'convert__object_array_type',
+						},
+					],
+				},
+				{
+					'name' : 'remove',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'int',
+								'converter' : 'convert_int',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'java.lang.Object',
+								'converter' : 'convert_proxy',
+						},
+					],
+				},
+				{
+					'name' : 'remove',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'java.lang.Object',
+								'converter' : 'convert_proxy',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'boolean',
+								'converter' : 'convert_boolean',
+						},
+					],
+				},
+				{
+					'name' : 'set',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'int',
+								'converter' : 'convert_int',
+						},
+						{
+								'type' : 'java.lang.Object',
+								'converter' : 'convert_proxy',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'java.lang.Object',
+								'converter' : 'convert_proxy',
+						},
+					],
+				},
+				{
+					'name' : 'ensureCapacity',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+						{
+								'type' : 'int',
+								'converter' : 'convert_int',
+						},
+					],
+					'returns' : [
+						{
+								'type' : 'void',
+								'converter' : 'convert_void',
+						},
+					],
+				},
+				{
+					'name' : 'trimToSize',
+					'tags' : ['_instance', '_proxy'],
+					'params' : [
+					],
+					'returns' : [
+						{
+								'type' : 'void',
+								'converter' : 'convert_void',
+						},
+					],
+				},
+			],	
+			'constructors' : [	
+				{
+					'name' : 'java.util.ArrayList',
+					'tags' : ['_proxy'],
+					'params' : [
+						{
+								'type' : 'int',
+								'converter' : 'convert_int',
+						},
+					],
+				},
+				{
+					'name' : 'java.util.ArrayList',
+					'tags' : ['_proxy'],
+					'params' : [
+					],
+				},
+				{
+					'name' : 'java.util.ArrayList',
+					'tags' : ['_proxy'],
+					'params' : [
+						{
+								'type' : 'java.util.Collection',
+								'children' : [{'type': 'java.lang.Object', 'converter': 'convert_proxy'}],
 								'converter' : 'convert_proxy',
 						},
 					],
@@ -8651,9 +8985,9 @@ config = {
 					],
 					'returns' : [
 						{
-								'type' : '_object_array_type',
+								'type' : '_array_array_type',
 								'children' : [{'type': '_object_array_type', 'children': [{'type': 'java.lang.annotation.Annotation', 'converter': 'convert_proxy'}], 'converter': 'convert__object_array_type'}],
-								'converter' : 'convert__object_array_type',
+								'converter' : 'convert__array_array_type',
 						},
 					],
 				},
@@ -8899,9 +9233,9 @@ config = {
 					],
 					'returns' : [
 						{
-								'type' : '_object_array_type',
+								'type' : '_array_array_type',
 								'children' : [{'type': '_object_array_type', 'children': [{'type': 'java.lang.annotation.Annotation', 'converter': 'convert_proxy'}], 'converter': 'convert__object_array_type'}],
-								'converter' : 'convert__object_array_type',
+								'converter' : 'convert__array_array_type',
 						},
 					],
 				},

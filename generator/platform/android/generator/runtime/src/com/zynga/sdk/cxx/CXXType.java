@@ -27,7 +27,10 @@ public class CXXType {
 		typeType = inferTypeType(type);
 		typeClass = inferTypeClass(type);
 		typePackage = inferTypePackage(type);
-		childTypes = buildChildTypes(type);
+		if (typeClass.equals(Enum.class) == false)
+		{
+			childTypes = buildChildTypes(type);
+		}
 	}
 	
 	public Class getTypeType() {
@@ -125,12 +128,13 @@ public class CXXType {
 	private List<CXXType> buildChildTypes(Type type)
 	{
 		// String[], List<T>[], List<List<T>[]
+		List<CXXType> children = new ArrayList<CXXType>();
 		if (type instanceof Class)
 		{
 			Type componentType = ((Class) type).getComponentType();
 			if (componentType != null)
 			{
-				childTypes.add(new CXXType(componentType));
+				children.add(new CXXType(componentType));
 			}
 		}
 		else if (type instanceof ParameterizedType)
@@ -138,13 +142,13 @@ public class CXXType {
 			Type[] componentTypes = ((ParameterizedType) type).getActualTypeArguments();
 			for (Type componentType : componentTypes)
 			{
-				childTypes.add(new CXXType(componentType));
+				children.add(new CXXType(componentType));
 			}
 		}
 		else if (type instanceof GenericArrayType)
 		{
 			Type componentType = ((GenericArrayType) type).getGenericComponentType();
-			childTypes.add(new CXXType(componentType));
+			children.add(new CXXType(componentType));
 		}
 		else if (type instanceof TypeVariable)
 		{
@@ -157,7 +161,7 @@ public class CXXType {
 					Type componentType = ((Class) containerType).getComponentType();
 					if (componentType != null)
 					{
-						childTypes.add(new CXXType(componentType));
+						children.add(new CXXType(componentType));
 					}
 				}
 				else if (containerType instanceof ParameterizedType)
@@ -165,13 +169,13 @@ public class CXXType {
 					Type[] componentTypes = ((ParameterizedType) containerType).getActualTypeArguments();
 					for (Type componentType : componentTypes)
 					{
-						childTypes.add(new CXXType(componentType));
+						children.add(new CXXType(componentType));
 					}
 				}
 				else if (containerType instanceof TypeVariable)
 				{
 					List<CXXType> componentTypes = buildChildTypes(containerType);  
-					childTypes.addAll(componentTypes);
+					children.addAll(componentTypes);
 				}
 			}				
 		}
@@ -190,7 +194,7 @@ public class CXXType {
 						Type componentType = ((Class) containerType).getComponentType();
 						if (componentType != null)
 						{
-							childTypes.add(new CXXType(componentType));
+							children.add(new CXXType(componentType));
 						}
 					}
 					else if (containerType instanceof ParameterizedType)
@@ -198,19 +202,19 @@ public class CXXType {
 						Type[] componentTypes = ((ParameterizedType) containerType).getActualTypeArguments();
 						for (Type componentType : componentTypes)
 						{
-							childTypes.add(new CXXType(componentType));
+							children.add(new CXXType(componentType));
 						}
 					}
 					else if (containerType instanceof TypeVariable)
 					{
 						List<CXXType> componentTypes = buildChildTypes(containerType);
-						childTypes.addAll(componentTypes);
+						children.addAll(componentTypes);
 					}
 				}
 				
 			}
 		}
-		return childTypes;
+		return children;
 	}
 	
 	private Class inferTypeType(Type type)

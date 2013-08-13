@@ -1,6 +1,6 @@
 /*
  * Callback JNI (Callback CXX)
- * Author: cxx-bindings-generator
+ * Author: codegen
  */
 
 //

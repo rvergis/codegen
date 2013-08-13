@@ -540,25 +540,22 @@ config = {
 	],
 	"classes" : [ 
 		{
-			"name" : "java.math.BigDecimal",
-		},
-		{
-			"name" : "java.lang.String",
-		},
-		{
-			"name" : "java.net.Proxy$Type",
-		},
-		{
 			"name" : "org.json.JSONObject",
 		},
 		{
 			"name" : "org.json.JSONArray",
 		},
 		{
+			"name" : "java.lang.String",
+		},
+		{
 			"name" : "java.lang.Error"
 		},
 		{
-			"name" : "java.util.concurrent.Executor",
+			"name" : "java.math.BigDecimal",
+		},
+		{
+			"name" : "java.net.Proxy$Type",
 		},
 		{
 			"name" : "java.io.BufferedOutputStream",
@@ -579,6 +576,9 @@ config = {
 			"name" : "java.net.MalformedURLException",
 		},
 		{
+			"name" : "java.util.concurrent.Executor",
+		},
+		{
 			"name" : "java.util.Currency",
 		},
 		{
@@ -592,6 +592,9 @@ config = {
 		},
 		{
 			"name" : "android.support.v4.app.Fragment",
+		},
+		{
+			"name" : "android.text.AlteredCharSequence",
 		},
 		{
 			"name" : "android.webkit.WebView",

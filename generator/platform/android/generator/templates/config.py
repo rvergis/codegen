@@ -96,6 +96,9 @@ config = {
 			#if 'tags' in $clazz
 			'tags' : $clazz['tags'],
 			#end if
+			#if 'extends' in $clazz
+			'extends' : $sorted(clazz['extends']),
+			#end if
 			#if 'implements' in $clazz
 			'implements' : $sorted(clazz['implements']),
 			#end if			
